@@ -33,10 +33,10 @@ CoeficienteC = eval (input("Ingresa el coeficiente C: "))
 Raiz = (CoeficienteB**2 - (4*CoeficienteA*CoeficienteC))**(1/2)
 
 #Se calcula X_1 sumando el valor de la raiz cuadrada acorde a la formula
-FormulaGeneral1=((-1)*CoeficienteB + Raiz)/(2*CoeficienteA)
+FormulaGeneral1 = ((-1)*CoeficienteB + Raiz)/(2*CoeficienteA)
 
 #Se calcula X_2 restando el valor de la raiz cuadrada acorde a la formula
-FormulaGeneral2=((-1)*CoeficienteB - Raiz)/(2*CoeficienteA)
+FormulaGeneral2 = ((-1)*CoeficienteB - Raiz)/(2*CoeficienteA)
 
 #Se muestran los resultados para los que se resuelve la ecuación
 print("La solucion es: \nX_1 =",FormulaGeneral1,"\nX_2 =",FormulaGeneral2)
