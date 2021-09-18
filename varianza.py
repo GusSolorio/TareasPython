@@ -10,9 +10,9 @@
 #
 #   --- Se calcula con la formula
 #
-#   σ2= (x_1-promedio)² + (x_2-promedio)² + ... + (x_n-promedio)²
-# -------------------------------------------------------
-#                         N
+#          (x_1-promedio)² + (x_2-promedio)² + ... + (x_n-promedio)²
+#   σ²=  -----------------------------------------------------------
+#                                     N
 #
 #En este caso N = 5
 
