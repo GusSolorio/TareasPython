@@ -28,11 +28,11 @@ matriz_datos = [Linea 1 del txt, Linea 2 del txt, ...]"""
 archivo= open(ruta,"r")
 matriz_datos= archivo.read().strip().replace("\t","").replace(" ","").split("\n")
 
+
+
 for j in range (len(matriz_datos)):
     matriz.append([])
-   # for i in range(lineas_ensamblador):
     matriz[j].extend(matriz_datos[j].split(","))
-       # matriz.append([])
 
 for j in range(len(matriz_datos)):
     print(matriz[j])
@@ -41,6 +41,7 @@ for j in range(len(matriz_datos)):
     matriz= [ ,  ,  , ] j
             [ ,  ,  , ]
             [ ,  ,  , ]
+"""
 """
 for j in range (len(matriz_datos)):
     for i in range(len(matriz[j])):
@@ -54,7 +55,7 @@ for j in range (len(matriz_datos)):
 print ( "\n*********\n")
 for j in range(len(matriz_datos)):
     print(matriz[j])
-
+"""
 archivo.close()
 #archivo_salida= open("./salida.txt","w")
 #archivo_salida.write(salida)
