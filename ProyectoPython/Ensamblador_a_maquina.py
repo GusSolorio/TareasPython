@@ -2,8 +2,12 @@
 # vi: set shiftwidth=4 tabstop=8 expandtab:
 #
 matriz = []
+auxiliar = []
+valor_etiqueta= []
 
 ######## Definicion de diccionarios ############
+etiquetas= {}
+
 oppcode = {'add':'0000','addi':'0001','and':'0010','andi':'0011','beq':'0100',\
         'bne':'0101','j':'0110', 'jal':'0111','jr':'1010','lb':'1011','or':'1100',\
         'sb':'1101','sll':'1110','srl':'1111' }
@@ -28,14 +32,25 @@ matriz_datos = [Linea 1 del txt, Linea 2 del txt, ...]"""
 archivo= open(ruta,"r")
 matriz_datos= archivo.read().strip().replace("\t","").replace(" ","").split("\n")
 
+for j in range (len(matriz_datos)):
+    if(":" in matriz_datos[j]):
+        valor_etiqueta.append(j+1)
+        auxiliar.extend(matriz_datos[j].split(":"))
+        #etiquetas[auxiliar[j]] = valor_etiqueta[j]
+        #del auxiliar[j]
+    else:
+        auxiliar.extend(matriz_datos[j].split(":"))
+    print(auxiliar[j])
 
-
+print(valor_etiqueta)
+"""
 for j in range (len(matriz_datos)):
     matriz.append([])
     matriz[j].extend(matriz_datos[j].split(","))
 
 for j in range(len(matriz_datos)):
     print(matriz[j])
+"""
 
 """          i
     matriz= [ ,  ,  , ] j
