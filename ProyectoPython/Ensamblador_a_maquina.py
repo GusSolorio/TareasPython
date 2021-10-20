@@ -4,7 +4,7 @@
 matriz = []
 auxiliar = []
 valor_etiqueta= []
-
+auxiliar2 = []
 ######## Definicion de diccionarios ############
 etiquetas= {}
 
@@ -37,27 +37,33 @@ for j in range (len(matriz_datos)):
         valor_etiqueta.append(j+1)
         auxiliar.extend(matriz_datos[j].split(":"))
         #etiquetas[auxiliar[j]] = valor_etiqueta[j]
-        #del auxiliar[j]
+        auxiliar2.append(auxiliar[j])
+        del auxiliar[j]
     else:
         auxiliar.extend(matriz_datos[j].split(":"))
     print(auxiliar[j])
 
+for j in range (len(auxiliar2)):
+    etiquetas[auxiliar2[j]]=valor_etiqueta[j]
+
 print(valor_etiqueta)
-"""
+print(etiquetas)
+print("****")
+
 for j in range (len(matriz_datos)):
     matriz.append([])
-    matriz[j].extend(matriz_datos[j].split(","))
+    matriz[j].extend(auxiliar[j].split(","))
 
 for j in range(len(matriz_datos)):
     print(matriz[j])
-"""
 
 """          i
     matriz= [ ,  ,  , ] j
             [ ,  ,  , ]
             [ ,  ,  , ]
 """
-"""
+
+
 for j in range (len(matriz_datos)):
     for i in range(len(matriz[j])):
         if i == 0:
@@ -70,7 +76,7 @@ for j in range (len(matriz_datos)):
 print ( "\n*********\n")
 for j in range(len(matriz_datos)):
     print(matriz[j])
-"""
+
 archivo.close()
 #archivo_salida= open("./salida.txt","w")
 #archivo_salida.write(salida)
