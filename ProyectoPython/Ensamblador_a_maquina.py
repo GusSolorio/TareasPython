@@ -5,6 +5,7 @@ matriz = []
 auxiliar = []
 valor_etiqueta= []
 auxiliar2 = []
+imm = []
 ######## Definicion de diccionarios ############
 etiquetas= {}
 
@@ -32,6 +33,10 @@ matriz_datos = [Linea 1 del txt, Linea 2 del txt, ...]"""
 archivo= open(ruta,"r")
 matriz_datos= archivo.read().strip().replace("\t","").replace(" ","").split("\n")
 
+"""
+***Busca etiquetas en caso de que existan, las guarda en un diccionario con su
+***valor
+"""
 for j in range (len(matriz_datos)):
     if(":" in matriz_datos[j]):
         valor_etiqueta.append(j+1)
@@ -45,17 +50,41 @@ for j in range (len(matriz_datos)):
 
 for j in range (len(auxiliar2)):
     etiquetas[auxiliar2[j]]=valor_etiqueta[j]
+"""
+Diccionario etiquetas
+"""
+#print(etiquetas)
+#print("****")
 
-print(valor_etiqueta)
-print(etiquetas)
-print("****")
 
 for j in range (len(matriz_datos)):
     matriz.append([])
     matriz[j].extend(auxiliar[j].split(","))
 
+#for j in range(len(matriz_datos)):
+#    print(matriz[j])
+
+"""
+"""
 for j in range(len(matriz_datos)):
-    print(matriz[j])
+    imm.append(None)
+    if (matriz[j][0] == "j") or (matriz[j][0]=="jal") or (matriz[j][0]== "jr"):
+        imm[j]= None
+        print("if - Valor de la fila {} en la columna 0:{}".format(j,matriz[j][0]))
+
+    elif (matriz[j][3] == "x0")or(matriz[j][3] == "x1")or(matriz[j][3] =="x2")\
+            or (matriz[j][3] == "x3") or (matriz[j][3] == "x4")or\
+            (matriz[j][3] =="x5")or(matriz[j][3] == "x6")or(matriz[j][3] == "x7"):
+        imm[j]= None
+        print("elif - Valor de la fila {} en la columna 3:{}".format(j,matriz[j][3]))
+    else:
+        print("Else - Valor de fila {} en columna 3: {}".format(j,matriz[j][3]))
+        imm[j]= eval(matriz[j][3])
+
+print(imm)
+print("***Fin de casos de imm***")
+"""
+"""
 
 """          i
     matriz= [ ,  ,  , ] j
@@ -63,20 +92,20 @@ for j in range(len(matriz_datos)):
             [ ,  ,  , ]
 """
 
-
+"""
 for j in range (len(matriz_datos)):
     for i in range(len(matriz[j])):
         if i == 0:
             matriz[j][i]=oppcode[matriz[j][i]]
-        elif i == 1:
-            matriz[j][i]=Rt[matriz[j][i]]
-        elif i== 2:
-            matriz[j][i]=Rs[matriz[j][i]]
+       # elif i == 1:
+       #     matriz[j][i]=Rt[matriz[j][i]]
+       # elif i== 2:
+       #     matriz[j][i]=Rs[matriz[j][i]]
 
 print ( "\n*********\n")
 for j in range(len(matriz_datos)):
     print(matriz[j])
-
+"""
 archivo.close()
 #archivo_salida= open("./salida.txt","w")
 #archivo_salida.write(salida)
