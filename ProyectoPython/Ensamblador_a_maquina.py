@@ -12,10 +12,7 @@ etiquetas= {}
 oppcode = {'add':'0000','addi':'0001','and':'0010','andi':'0011','beq':'0100',\
         'bne':'0101','j':'0110', 'jal':'0111','jr':'1010','lb':'1011','or':'1100',\
         'sb':'1101','sll':'1110','srl':'1111' }
-Rt ={'x0':'000','x1':'001','x2':'010','x3':'011','x4':'100','x5':'101','x6':'110',\
-'x7':'111','X0':'000','X1':'001','X2':'010','X3':'011','X4':'100','X5':'101',\
-'X6':'110','X7':'111'}
-Rs = {'x0':'000','x1':'001','x2':'010','x3':'011','x4':'100','x5':'101','x6':'110',\
+Rx ={'x0':'000','x1':'001','x2':'010','x3':'011','x4':'100','x5':'101','x6':'110',\
 'x7':'111','X0':'000','X1':'001','X2':'010','X3':'011','X4':'100','X5':'101',\
 'X6':'110','X7':'111'}
 ###########################################
@@ -46,7 +43,7 @@ for j in range (len(matriz_datos)):
         del auxiliar[j]
     else:
         auxiliar.extend(matriz_datos[j].split(":"))
-    print(auxiliar[j])
+   # print(auxiliar[j])
 
 for j in range (len(auxiliar2)):
     etiquetas[auxiliar2[j]]=valor_etiqueta[j]
@@ -70,19 +67,22 @@ for j in range(len(matriz_datos)):
     imm.append(None)
     if (matriz[j][0] == "j") or (matriz[j][0]=="jal") or (matriz[j][0]== "jr"):
         imm[j]= None
-        print("if - Valor de la fila {} en la columna 0:{}".format(j,matriz[j][0]))
-
     elif (matriz[j][3] == "x0")or(matriz[j][3] == "x1")or(matriz[j][3] =="x2")\
             or (matriz[j][3] == "x3") or (matriz[j][3] == "x4")or\
             (matriz[j][3] =="x5")or(matriz[j][3] == "x6")or(matriz[j][3] == "x7"):
         imm[j]= None
-        print("elif - Valor de la fila {} en la columna 3:{}".format(j,matriz[j][3]))
+    elif (matriz[j][0]=="beq")or(matriz[j][0]=="bne"):
+        imm[j] = None
     else:
-        print("Else - Valor de fila {} en columna 3: {}".format(j,matriz[j][3]))
         imm[j]= eval(matriz[j][3])
 
+#imprime los valores en int de imm
 print(imm)
-print("***Fin de casos de imm***")
+for l in range (len(imm)):
+    if (imm[l] != None):
+        imm[l] = (bin(((1 << 8) -1) & imm[l])[2:]).zfill(8)
+#imprime los valores en 8 bits de imm
+print(imm)
 """
 """
 
@@ -98,9 +98,9 @@ for j in range (len(matriz_datos)):
         if i == 0:
             matriz[j][i]=oppcode[matriz[j][i]]
        # elif i == 1:
-       #     matriz[j][i]=Rt[matriz[j][i]]
+       #     matriz[j][i]=Rx[matriz[j][i]]
        # elif i== 2:
-       #     matriz[j][i]=Rs[matriz[j][i]]
+       #     matriz[j][i]=Rx[matriz[j][i]]
 
 print ( "\n*********\n")
 for j in range(len(matriz_datos)):
