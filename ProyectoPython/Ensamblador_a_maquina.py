@@ -9,6 +9,7 @@ auxiliar2 = []
 imm = []
 relleno = "00000"
 rellenojr = "00000000000"
+salida=""
 ######## Definicion de diccionarios ############
 etiquetas= {}
 
@@ -79,18 +80,18 @@ for j in range(len(matriz_datos)):
         imm[j]= eval(matriz[j][3])
 
 #imprime los valores en int de imm
-print(imm)
+#print(imm)
 for l in range (len(imm)):
     if (imm[l] != None):
         imm[l] = (bin(((1 << 8) -1) & imm[l])[2:]).zfill(8)
 #imprime los valores en 8 bits de imm
-print(imm)
-print(etiquetas)
-
+#print(imm)
+#print(etiquetas)
+"""
 print("**matriz***")
 for j in range (len(matriz_datos)):
     print(matriz[j])
-
+"""
 """          i
     matriz= [ ,  ,  , ] j
             [ ,  ,  , ]
@@ -174,7 +175,25 @@ for j in range(len(matriz_datos)):
 print("****matriz***")
 for j in range(len(matriz_datos)):
     print(matriz[j])
+
+for j in range(len(matriz_datos)):
+    for i in range(len(resultado[j])):
+        print(resultado[j][i], end="")
+    print("\n",end="")
+
+print("****")
+for j in range(len(matriz_datos)):
+    for i in range(len(resultado[j])):
+       salida=salida+resultado[j][i]
+    salida=salida+"\n"
+
+print(salida)
 archivo.close()
+
+archivo_salida=open('resultado.txt',"w")
+archivo_salida.write(salida)
+archivo_salida.close()
+
 #archivo_salida= open("./salida.txt","w")
 #archivo_salida.write(salida)
 #archivo_salida.close()
