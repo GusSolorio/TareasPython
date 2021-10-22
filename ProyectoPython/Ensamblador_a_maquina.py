@@ -113,10 +113,8 @@ for j in range (len(matriz_datos)):
                 resultado[j][i] = Rx[matriz[j][i]] + rellenojr
             elif (matriz[j][0] == "bne") or (matriz[j][0] == "beq"):
                 resultado[j][i] = Rx[matriz[j][i]]
-            elif (matriz[j][0] == "sll"):
-                resultado[j][i] = Rx[matriz[j][i]]
-            elif (matriz[j][0] == "slr"):
-                resultado[j][i] = Rx[matriz[j][i+1]]
+            elif (matriz[j][0] == "sll")or (matriz[j][0] == "srl"):
+                resultado[j][i] = Rx[matriz[j][i+2]]
             elif (matriz[j][0] == "sb") or (matriz[j][0] == "lb"):
                 resultado[j][i] = Rx[matriz[j][i+2]]
             else:
@@ -130,7 +128,7 @@ for j in range (len(matriz_datos)):
                 resultado[j][i] = Rx[matriz[j][i]]
             elif (matriz[j][0] == "sll"):
                 resultado[j][i] = Rx[matriz[j][i]]
-            elif (matriz[j][0] == "slr"):
+            elif (matriz[j][0] == "srl"):
                 resultado[j][i] = Rx[matriz[j][i-1]]
             elif (matriz[j][0] == "sb") or (matriz[j][0] == "lb"):
                 resultado[j][i] = Rx[matriz[j][i-1]]
