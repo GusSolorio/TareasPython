@@ -138,7 +138,32 @@ for j in range (len(matriz_datos)):
                 resultado[j][i] = Rx[matriz[j][i-1]]
             else:
                 resultado[j][i] = Rx[matriz[j][i+1]]
-       #     matriz[j][i]=Rx[matriz[j][i]]
+        elif i==3:
+            if (matriz[j][0] == "j")or(matriz[j][0] == "jal"):
+                x="no hace nada"
+            elif (matriz[j][0] == "jr"):
+                x="no hace nada"
+            elif (matriz[j][0] == "bne"):
+                if ( j > etiquetas[matriz[j][i]]):
+                    tag = -1*etiquetas[matriz[j][i]]
+                else:
+                    tag = etiquetas[matriz[j][i]]
+                resultado[j][i] = (bin(((1<<8)-1)& tag)[2:]).zfill(8)
+            elif (matriz[j][0] == "beq"):
+                tag = etiquetas[matriz[j][i]]-(j+1)
+                resultado[j][i] = (bin(((1<<8)-1)& tag)[2:]).zfill(8)
+            elif (matriz[j][0] == "sll"):
+                resultado[j][i] = Rx[matriz[j][i-2]]+relleno
+            elif (matriz[j][0] == "srl"):
+                resultado[j][i] = Rx[matriz[j][i-1]]+relleno
+            elif (matriz[j][0] == "sb") or (matriz[j][0] == "lb"):
+                tag = eval(matriz[j][i-1])
+                resultado[j][i] = (bin(((1<<8)-1)& tag)[2:]).zfill(8)
+            elif (matriz[j][0] =="addi") or (matriz[j][0] =="andi"):
+                resultado[j][i] = imm[j]
+            else:
+                resultado[j][i] = Rx[matriz[j][i-2]]+relleno
+               #     matriz[j][i]=Rx[matriz[j][i]]
        # elif i== 2:
        #     matriz[j][i]=Rx[matriz[j][i]]
 
