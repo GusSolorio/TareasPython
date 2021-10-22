@@ -121,6 +121,21 @@ for j in range (len(matriz_datos)):
                 resultado[j][i] = Rx[matriz[j][i+2]]
             else:
                 resultado[j][i] = Rx[matriz[j][i+1]]
+        elif i==2:
+            if (matriz[j][0] == "j")or(matriz[j][0] == "jal"):
+                x="no hace nada"
+            elif (matriz[j][0] == "jr"):
+                x="no hace nada"
+            elif (matriz[j][0] == "bne") or (matriz[j][0] == "beq"):
+                resultado[j][i] = Rx[matriz[j][i]]
+            elif (matriz[j][0] == "sll"):
+                resultado[j][i] = Rx[matriz[j][i]]
+            elif (matriz[j][0] == "slr"):
+                resultado[j][i] = Rx[matriz[j][i-1]]
+            elif (matriz[j][0] == "sb") or (matriz[j][0] == "lb"):
+                resultado[j][i] = Rx[matriz[j][i-1]]
+            else:
+                resultado[j][i] = Rx[matriz[j][i-1]]
        #     matriz[j][i]=Rx[matriz[j][i]]
        # elif i== 2:
        #     matriz[j][i]=Rx[matriz[j][i]]
