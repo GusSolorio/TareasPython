@@ -117,6 +117,8 @@ for j in range (len(matriz_datos)):
                 resultado[j][i] = Rx[matriz[j][i+2]]
             elif (matriz[j][0] == "sb") or (matriz[j][0] == "lb"):
                 resultado[j][i] = Rx[matriz[j][i+2]]
+            elif (matriz[j][0] == "addi")or(matriz[j][0]=="andi"):
+                resultado[j][i] = Rx[matriz[j][i+1]]
             else:
                 resultado[j][i] = Rx[matriz[j][i+1]]
         elif i==2:
@@ -132,8 +134,10 @@ for j in range (len(matriz_datos)):
                 resultado[j][i] = Rx[matriz[j][i-1]]
             elif (matriz[j][0] == "sb") or (matriz[j][0] == "lb"):
                 resultado[j][i] = Rx[matriz[j][i-1]]
-            else:
+            elif (matriz[j][0] == "addi")or(matriz[j][0]=="andi"):
                 resultado[j][i] = Rx[matriz[j][i-1]]
+            else:
+                resultado[j][i] = Rx[matriz[j][i+1]]
        #     matriz[j][i]=Rx[matriz[j][i]]
        # elif i== 2:
        #     matriz[j][i]=Rx[matriz[j][i]]
